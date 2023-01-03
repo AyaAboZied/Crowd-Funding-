@@ -35,7 +35,7 @@ def targetvalidation():
         if target >= 2000 and target !="" :
             break
         else:
-            print("please enter target number equal or above 1000")
+            print("please enter target number equal or above 2000")
             target = input("please enter your total target : ")
     return target
 
@@ -48,6 +48,16 @@ def datevalidation(input_date):
     except ValueError:
         raise ValueError("Incorrect data format, should be YYYY-MM-DD")
 # function for project editing / update fields validation
+def is_valid (start,end):
+    while True:
+        if start < end:
+            break
+        else :
+            print("your end date can't be before the project even start")
+            enddate=input("please enter end date in YYYY-MM-DD : ")
+            end = datevalidation(enddate)
+            print(end)
+    return end
 
 def fieldvalidation(id, line):
     editline = []
@@ -78,6 +88,7 @@ def fieldvalidation(id, line):
         elif editfield == "e":
             end=input("please enter end date in YYYY-MM-DD: ")
             line[5] = datevalidation(end)
+            end=is_valid(start,end)
             editline.append(line)
             print("field has been updated")
             return editline[0]
@@ -100,6 +111,8 @@ def createproject(id):
 
     end=input("please enter end date in YYYY-MM-DD : ")
     projectendDate = datevalidation(end)
+
+    projectendDate=is_valid(start,end)
 
     print("creating project")
     print(f" project name : {projectname} \n project description : {projectdescription} \n project total target : {target} \n project start date : {projectstartDate} \n project end date : {projectendDate} ")

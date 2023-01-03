@@ -64,7 +64,7 @@ def phonevalidation():
 def registration():
     fullname = namevalidation()
     with open("users.txt", 'a') as userfile:
-        userfile.writelines([f"{id(fullname)}:{fullname[0]}:{fullname[1]}:"])
+        userfile.writelines([f"{id(fullname)}:{fullname}:"])
 
     email = emailvalidation()
     with open("users.txt", 'a') as userfile:
@@ -107,9 +107,9 @@ def login():
             if loginemail in data:
                 passuser = input("please enter your password : ").strip()
                 if data[data.index(loginemail)+1] == passuser:
-                    print(f"welcome {data[data.index(loginemail)-2]} {data[data.index(loginemail)-1]}")
+                    print(f"welcome {data[data.index(loginemail)-1]}")
                     try:
-                        projects(data[data.index(loginemail)-3])
+                        projects(data[data.index(loginemail)-2])
                     except:
                         print("something went wrong")
                     break
