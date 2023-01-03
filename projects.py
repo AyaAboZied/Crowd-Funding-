@@ -102,10 +102,6 @@ def deleteproject(id):
         return restfile
 
 
-def viewproject():
-    projectsfile = open("projects.txt", 'r')
-    for line in projectsfile:
-        print(line)
 
 def fieldvalidation(id, line):
     editline = []
@@ -150,6 +146,12 @@ def editproject(id):
                 print("you don't have any projects to be edited ")
                 restfile += line
         return restfile
+
+
+def viewproject():
+    projectsfile = open("projects.txt", 'r')
+    for line in projectsfile:
+        print(line)
 
 
 def projects(id):

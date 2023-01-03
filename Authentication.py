@@ -115,7 +115,7 @@ def login():
 
 
 def signinup():
-    choice = int(input("for login enter 1\nfor register enter 2 : "))
+    choice = int(input("for login enter 1\nfor register enter 2 :\nfor exit enter 3 : "))
     try:
         choice == 1 or choice == 2
     except:
@@ -131,6 +131,8 @@ def signinup():
                 registration()
             except:
                 print("something went wrong")
+        elif choice == 3:
+            return
         else:
             print("invalid choice")
 
