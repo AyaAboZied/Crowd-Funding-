@@ -121,7 +121,7 @@ def fieldvalidation(id, line):
         elif editfield == "e":
             end=input("please enter end date in YYYY-MM-DD: ")
             line[5] = datevalidation(end)
-            end=is_valid(start,end)
+            end=is_valid(line[4],line[5])
         editline.append(line)
         print("field has been updated")
         print('-------------------------------------------------')

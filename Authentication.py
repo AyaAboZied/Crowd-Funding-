@@ -76,6 +76,8 @@ def registration():
     print("your registration goes successfully")
     print('-------------------------------------------------')
     choiceforlogin = input("do you want to login now?[y/n] ").strip().lower()
+    print('-------------------------------------------------')
+
     try:
         choiceforlogin == "y" or choiceforlogin == "n"
     except:
@@ -103,6 +105,7 @@ def login():
                 passuser = input("please enter your password : ").strip()
                 if data[data.index(loginemail)+1] == passuser:
                     print(f"welcome {data[data.index(loginemail)-1]}")
+                    print('-------------------------------------------------')
                     try:
                         projects(data[data.index(loginemail)-2])
                     except:
