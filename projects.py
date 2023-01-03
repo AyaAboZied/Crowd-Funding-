@@ -76,6 +76,7 @@ def createproject(id):
 
     print("creating project")
     print(f" project name : {projectname} \n project description : {projectdescription} \n project total target : {target} \n project start date : {projectstartDate} \n project end date : {projectendDate} ")
+    print('-------------------------------------------------')
 
     with open("projects.txt", 'a') as projectsfile:
         projectsfile.writelines(
@@ -123,6 +124,7 @@ def fieldvalidation(id, line):
             end=is_valid(start,end)
         editline.append(line)
         print("field has been updated")
+        print('-------------------------------------------------')
         return editline[0]
     else:
         print("no available field")
@@ -139,7 +141,6 @@ def editproject(id):
                     editedline = fieldvalidation(id, line.split(":"))
                     editedline = ":".join(editedline)
                     restfile += editedline
-                    print("editing file")
                 else:
                     restfile += line
             else:
@@ -152,6 +153,8 @@ def viewproject():
     projectsfile = open("projects.txt", 'r')
     for line in projectsfile:
         print(line)
+    print('-------------------------------------------------')
+    
 
 
 def projects(id):

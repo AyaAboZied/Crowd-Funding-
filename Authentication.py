@@ -74,6 +74,7 @@ def registration():
         userfile.write(f"{phone}\n")
 
     print("your registration goes successfully")
+    print('-------------------------------------------------')
     choiceforlogin = input("do you want to login now?[y/n] ").strip().lower()
     try:
         choiceforlogin == "y" or choiceforlogin == "n"
@@ -117,7 +118,7 @@ def login():
 def signinup():
     choice = int(input("for login enter 1\nfor register enter 2 :\nfor exit enter 3 : "))
     try:
-        choice == 1 or choice == 2
+        choice == 1 or choice == 2 or choice == 3
     except:
         print("invalid choice")
     else:
