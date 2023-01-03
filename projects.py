@@ -1,7 +1,4 @@
-# projects part
-
 import datetime
-
 
 # function for project name validation
 
@@ -22,7 +19,7 @@ def descvalidation():
     while True:
         if projectdescription.isalpha():
             break
-        elif projectdescription == " ":
+        elif projectdescription == "":
             print("cannot be empty")
             projectdescription = input("enter project decription : ").strip().lower()
         else:
@@ -35,69 +32,54 @@ def descvalidation():
 def targetvalidation():
     while True:
         target = int(input("please enter your total target : "))
-        if target.isnumric() and target >= 1000 and target!="" :
+        if target >= 2000 and target !="" :
             break
         else:
             print("please enter target number equal or above 1000")
             target = input("please enter your total target : ")
     return target
 
-# function for project start and end date validation
+# function for project date validation
 
-def datevalidation():
-    while True:
-        try:
-            projectstartDate = input("enter project start date in 'dd/mm/yy' format : ").split('/')
-            projectendDate = input("enter project end date in 'dd/mm/yy' format : ").split('/')
-            projectstartDate = datetime.datetime(int(projectstartDate[2]), int(projectstartDate[1]), int(projectstartDate[0]))
-            try:
-                projectendDate = datetime.datetime(int(projectendDate[2]), int( projectendDate[1]), int(projectendDate[0]))
-            except:
-                print("input date is not valid enter as dd/mm/yy")
-                break
-        except:
-            print("input date is not valid enter as dd/mm/yy")
-            break
-        else:
-            if projectstartDate < projectendDate:
-                return [projectstartDate, projectendDate]
-            else:
-                print("end date can't be before start date please enter valid date")
-                break
-    return [projectstartDate, projectendDate]
-
+def datevalidation(input_date): 
+    try:
+        dateobj=datetime.datetime.strptime(input_date, '%Y-%m-%d')
+        return dateobj
+    except ValueError:
+        raise ValueError("Incorrect data format, should be YYYY-MM-DD")
 # function for project editing / update fields validation
 
 def fieldvalidation(id, line):
     editline = []
-    fields = ["name", "description","target", "startdate", "enddate"]
-    editfield = input("enter the field name to be edited from [ 'name', 'description','target', 'startdate', 'enddate'] :").strip().lower()
+    fields = ["n", "d","t", "s", "e"]
+    editfield = input("enter the field name to be edited from [ 'n for name', 'd for description',' t for target', 's for startdate', 'e for enddate'] :").strip().lower()
     if editfield in fields:
-        if editfield == "name":
-            projectname = namevalidation()
-            line[1] = projectname
+        if editfield == "n":
+            line[1] =  namevalidation()
             editline.append(line)
-            print("editing field")
+            print("field has been updated")
             return editline[0]
-        elif editfield == "description":
-            projectdescription = descvalidation()
-            line[2] = projectdescription
+        elif editfield == "d":
+            line[2] = descvalidation()
             editline.append(line)
-            print("editing field")
+            print("field has been updated")
             return editline[0]
-        elif editfield == "target":
-            target = str(targetvalidation())
-            line[3] = target
+        elif editfield == "t":
+            line[3] = str(targetvalidation())
             editline.append(line)
-            print("editing field")
+            print("field has been updated")
             return editline[0]
-        elif editfield == "startdate" or editfield == "enddate":
-            projectstartDate = str(datevalidation()[0])
-            projectendDate = str(datevalidation()[1])
-            line[4] = projectstartDate
-            line[5] = projectendDate
+        elif editfield == "s":
+            start=input("please enter start date in YYYY-MM-DD : ")
+            line[4] = datevalidation(start)
             editline.append(line)
-            print("editing field")
+            print("field has been updated")
+            return editline[0]
+        elif editfield == "e":
+            end=input("please enter end date in YYYY-MM-DD: ")
+            line[5] = datevalidation(end)
+            editline.append(line)
+            print("field has been updated")
             return editline[0]
     else:
         print("no available field")
@@ -113,12 +95,13 @@ def createproject(id):
 
     target = targetvalidation()
 
-    projectstartDate = datevalidation()[0]
+    start=input("please enter start date in YYYY-MM-DD : ")
+    projectstartDate = datevalidation(start)
 
-    projectendDate = datevalidation()[1]
+    end=input("please enter end date in YYYY-MM-DD : ")
+    projectendDate = datevalidation(end)
 
     print("creating project")
-
     print(f" project name : {projectname} \n project description : {projectdescription} \n project total target : {target} \n project start date : {projectstartDate} \n project end date : {projectendDate} ")
 
     with open("projects.txt", 'a') as projectsfile:
@@ -136,7 +119,7 @@ def deleteproject(id):
         for line in projectsfile.readlines():
             if id in line:
                 if line.split(":")[1] == projectname:
-                    print("deleting project")
+                    print("project deleted")
                 else:
                     restfile += line    
             else:
@@ -216,3 +199,4 @@ def projects(id):
                 break
             else:
                 print("invalid choice")
+                

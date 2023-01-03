@@ -1,13 +1,3 @@
-
-'''Crowdfunding is the practice of funding a project or venture by raising small
-amounts of money from a large number of people, typically via the Internet.
-Crowdfunding is a form of crowdsourcing and alternative finance. In 2015,
-over US$34 billion was raised worldwide by crowdfunding.'''
-
-
-# login/registration part
-
-
 import re
 from projects import projects
 
@@ -16,19 +6,14 @@ from projects import projects
 # function for first and second name validation
 
 def namevalidation():
-    regex=r'^[A-Za-z]*$'
-    firstname = input("enter your first name : ").strip().lower()
+    name = input("enter your full name : ").strip().lower()
     while True:
-        if re.fullmatch(regex,firstname) and firstname!='':
-            lastname = input("enter your last name : ").strip().lower()
-            if re.fullmatch(regex,lastname) and lastname !='':
-                break
-            else:
-                print("enter your last name without spaces or digits")
-        elif firstname.isspace() or not(firstname.isalnum()) or firstname.isalnum():
-            print("enter your first name without spaces or digits")
-            firstname = input("enter your first name : ").strip().lower()
-    return [firstname, lastname]
+        if name.isalpha() and name !="":
+            break
+        else:
+            print("enter your name without spaces or digits")
+            name = input("enter your name : ").strip().lower()
+    return name
 
 # function for email validation
 
@@ -79,8 +64,7 @@ def phonevalidation():
 def registration():
     fullname = namevalidation()
     with open("users.txt", 'a') as userfile:
-        userfile.writelines(
-            [f"{id(fullname)}:{fullname[0]}:{fullname[1]}:"])
+        userfile.writelines([f"{id(fullname)}:{fullname[0]}:{fullname[1]}:"])
 
     email = emailvalidation()
     with open("users.txt", 'a') as userfile:
@@ -125,7 +109,7 @@ def login():
                 if data[data.index(loginemail)+1] == passuser:
                     print(f"welcome {data[data.index(loginemail)-2]} {data[data.index(loginemail)-1]}")
                     try:
-                        projects(data[0])
+                        projects(data[data.index(loginemail)-3])
                     except:
                         print("something went wrong")
                     break
@@ -138,12 +122,11 @@ def login():
 # function for choose between login /register
 
 def signinup():
-    choice = int(
-        input("for login enter 1\nfor register enter 2 : "))
+    choice = int(input("for login enter 1\nfor register enter 2 : "))
     try:
         choice == 1 or choice == 2
     except:
-        print("something went wrong")
+        print("invalid choice")
     else:
         if choice == 1:
             try:
