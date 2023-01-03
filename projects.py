@@ -56,7 +56,6 @@ def is_valid (start,end):
             print("your end date can't be before the project even start")
             enddate=input("please enter end date in YYYY-MM-DD : ")
             end = datevalidation(enddate)
-            print(end)
     return end
 
 def fieldvalidation(id, line):
@@ -112,7 +111,7 @@ def createproject(id):
     end=input("please enter end date in YYYY-MM-DD : ")
     projectendDate = datevalidation(end)
 
-    projectendDate=is_valid(start,end)
+    projectendDate=is_valid(projectstartDate,projectendDate)
 
     print("creating project")
     print(f" project name : {projectname} \n project description : {projectdescription} \n project total target : {target} \n project start date : {projectstartDate} \n project end date : {projectendDate} ")
