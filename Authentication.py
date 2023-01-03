@@ -1,9 +1,7 @@
 import re
 from projects import projects
 
-# helper functions
 
-# function for first and second name validation
 
 def namevalidation():
     name = input("enter your full name : ").strip().lower()
@@ -15,7 +13,7 @@ def namevalidation():
             name = input("enter your name : ").strip().lower()
     return name
 
-# function for email validation
+
 
 def emailvalidation():
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.com\b'
@@ -28,7 +26,7 @@ def emailvalidation():
             email = input( "enter valid email contains @ and .com : ").strip().lower()
     return email
 
-# function for password validation
+
 
 def passwordvalidation():
     regex = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,18}$'
@@ -45,7 +43,7 @@ def passwordvalidation():
             password = input("number ,special character and at least 8 character : ").strip()
     return password
 
-# function for phone validation
+
 
 def phonevalidation():
     phone = input("please enter your number : ").strip().lower()
@@ -57,9 +55,6 @@ def phonevalidation():
             phone = input("please enter your number : ").strip().lower()
     return phone
 
-# main functions
-
-# function for resgister
 
 def registration():
     fullname = namevalidation()
@@ -92,7 +87,6 @@ def registration():
         else:
             print("invalid input")
 
-# function for login
 
 def login():
     loginemail = input("please enter your email : ").strip().lower()
@@ -119,7 +113,6 @@ def login():
                 print("Invalid email , try again")
                 loginemail = input("please enter your email : ").strip().lower()
 
-# function for choose between login /register
 
 def signinup():
     choice = int(input("for login enter 1\nfor register enter 2 : "))

@@ -1,6 +1,5 @@
 import datetime
 
-# function for project name validation
 
 def namevalidation():
     projectname = input("enter your project name : ").strip().lower()
@@ -12,7 +11,7 @@ def namevalidation():
             projectname = input("enter your project name : ").strip().lower()
     return projectname
 
-# function for project description validation
+
 
 def descvalidation():
     projectdescription = input("enter project decription : ").strip().lower()
@@ -27,7 +26,6 @@ def descvalidation():
             projectdescription = input("enter project decription : ").strip().lower()
     return projectdescription
 
-# function for project total target validation
 
 def targetvalidation():
     while True:
@@ -47,7 +45,7 @@ def datevalidation(input_date):
         return dateobj
     except ValueError:
         raise ValueError("Incorrect data format, should be YYYY-MM-DD")
-# function for project editing / update fields validation
+
 def is_valid (start,end):
     while True:
         if start < end:
@@ -58,44 +56,7 @@ def is_valid (start,end):
             end = datevalidation(enddate)
     return end
 
-def fieldvalidation(id, line):
-    editline = []
-    fields = ["n", "d","t", "s", "e"]
-    editfield = input("enter the field name to be edited from [ 'n for name', 'd for description',' t for target', 's for startdate', 'e for enddate'] :").strip().lower()
-    if editfield in fields:
-        if editfield == "n":
-            line[1] =  namevalidation()
-            editline.append(line)
-            print("field has been updated")
-            return editline[0]
-        elif editfield == "d":
-            line[2] = descvalidation()
-            editline.append(line)
-            print("field has been updated")
-            return editline[0]
-        elif editfield == "t":
-            line[3] = str(targetvalidation())
-            editline.append(line)
-            print("field has been updated")
-            return editline[0]
-        elif editfield == "s":
-            start=input("please enter start date in YYYY-MM-DD : ")
-            line[4] = datevalidation(start)
-            editline.append(line)
-            print("field has been updated")
-            return editline[0]
-        elif editfield == "e":
-            end=input("please enter end date in YYYY-MM-DD: ")
-            line[5] = datevalidation(end)
-            end=is_valid(start,end)
-            editline.append(line)
-            print("field has been updated")
-            return editline[0]
-    else:
-        print("no available field")
 
-
-# function creating a project
 
 def createproject(id):
 
@@ -121,7 +82,7 @@ def createproject(id):
             [f"{id}:{projectname}:{projectdescription}:{target}:{projectstartDate}:{projectendDate} \n"]
         )
 
-# function deleteing a project
+
 
 def deleteproject(id):
     while True:
@@ -140,15 +101,36 @@ def deleteproject(id):
                 break
         return restfile
 
-# function viewing projects
 
 def viewproject():
     projectsfile = open("projects.txt", 'r')
     for line in projectsfile:
         print(line)
 
+def fieldvalidation(id, line):
+    editline = []
+    fields = ["n", "d","t", "s", "e"]
+    editfield = input("enter the field name to be edited from [ 'n for name', 'd for description',' t for target', 's for startdate', 'e for enddate'] :").strip().lower()
+    if editfield in fields:
+        if editfield == "n":
+            line[1] =  namevalidation()
+        elif editfield == "d":
+            line[2] = descvalidation()
+        elif editfield == "t":
+            line[3] = str(targetvalidation())
+        elif editfield == "s":
+            start=input("please enter start date in YYYY-MM-DD : ")
+            line[4] = datevalidation(start)
+        elif editfield == "e":
+            end=input("please enter end date in YYYY-MM-DD: ")
+            line[5] = datevalidation(end)
+            end=is_valid(start,end)
+        editline.append(line)
+        print("field has been updated")
+        return editline[0]
+    else:
+        print("no available field")
 
-# function edit a project
 
 def editproject(id):
     while True:
@@ -169,7 +151,6 @@ def editproject(id):
                 restfile += line
         return restfile
 
-# function to handle all the above
 
 def projects(id):
     while True:
