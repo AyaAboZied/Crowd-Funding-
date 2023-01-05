@@ -18,15 +18,15 @@ The aim of the project: Create a console app to start fundraise projects
 
   2. login/registration part:
     
-    - Authentications.py : include users name , email , password and phone validation
+    - Useralidation.py : include users name , email , password and phone validation
     
     - system.py has the login /registration
 
   3. projects part :
    
-   - projectAttribute.py : include projects name , description , total amount ,start date and end date validation
+   - projectValidation.py : include projects name , description , total amount ,start date and end date validation
    
-   - project Function:
+   - projectFunction:
         -   User can create projects
         -   User can view all projects
         -   User can edit his own projects 
