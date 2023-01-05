@@ -12,18 +12,28 @@ Crowdfunding is the practice of funding a project or venture by raising small am
  
 The aim of the project: Create a console app to start fundraise projects
 
-- it consists of 2 parts:
+- It consists of 3 parts:
+  
+  1. main.py : User menu
 
-  1. login/registration part:
-    - includes users name , email , password and phone validation
+  2. login/registration part:
+    
+    - Authentications.py : include users name , email , password and phone validation
+    
+    - system.py has the login /registration
 
-  2. projects part :
-    - includes projects name , description , total amount validation
-    • User can view all projects
-    • User can edit his own projects 
-    • User can delete his own project 
+  3. projects part :
+   
+   - projectAttribute.py : include projects name , description , total amount ,start date and end date validation
+   
+   - project Function:
+        -   User can create projects
+        -   User can view all projects
+        -   User can edit his own projects 
+        -   User can delete his own project 
+    - project.py : menu for project functions
 
 
 
 # Running
-- just open the terminal and run the `AuthenticationSystem.py`
+- just open the terminal and run the `main.py`
