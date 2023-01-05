@@ -2,13 +2,13 @@ from projectValidation import *
 
 def createproject(id):
     projectname = input("enter your project name : ").strip().lower()
-    projectname = namevalidation()
+    projectname = namevalidation(projectname)
 
     projectdescription = input("enter project decription : ").strip().lower()
-    projectdescription = descvalidation()
+    projectdescription = descvalidation(projectdescription)
 
     target = int(input("please enter your total target : "))
-    target = targetvalidation()
+    target = targetvalidation(target)
 
     start=input("please enter start date in YYYY-MM-DD : ")
     projectstartDate = datevalidation(start)
