@@ -11,12 +11,12 @@ def signinup():
             try:
                 login()
             except:
-                print("something went wrong")
+                print("something went wrong while login")
         elif choice == 2:
             try:
                 registration()
             except:
-                print("something went wrong")
+                print("something went wrong while register")
         elif choice == 3:
             return
         else:
