@@ -1,4 +1,4 @@
-from Authentication import *
+from UserValidation import *
 from Project import projects
 
 def registration():

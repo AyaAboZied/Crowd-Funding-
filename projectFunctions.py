@@ -1,11 +1,13 @@
-from projectsAttribute import *
+from projectValidation import *
 
 def createproject(id):
-
+    projectname = input("enter your project name : ").strip().lower()
     projectname = namevalidation()
 
+    projectdescription = input("enter project decription : ").strip().lower()
     projectdescription = descvalidation()
 
+    target = int(input("please enter your total target : "))
     target = targetvalidation()
 
     start=input("please enter start date in YYYY-MM-DD : ")
@@ -14,7 +16,7 @@ def createproject(id):
     end=input("please enter end date in YYYY-MM-DD : ")
     projectendDate = datevalidation(end)
 
-    projectendDate=is_valid(projectstartDate,projectendDate)
+    projectendDate=periodValidation(projectstartDate,projectendDate)
 
     print("creating project")
     print(f" project name : {projectname} \n project description : {projectdescription} \n project total target : {target} \n project start date : {projectstartDate} \n project end date : {projectendDate} ")

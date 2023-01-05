@@ -1,6 +1,5 @@
 import re
 
-
 def namevalidation():
     name = input("enter your full name : ").strip().lower()
     while True:

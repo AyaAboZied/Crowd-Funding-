@@ -1,8 +1,7 @@
 import datetime
 
 
-def namevalidation():
-    projectname = input("enter your project name : ").strip().lower()
+def namevalidation(projectname):
     while True:
         if projectname.isalpha() and projectname !="":
             break
@@ -13,8 +12,7 @@ def namevalidation():
 
 
 
-def descvalidation():
-    projectdescription = input("enter project decription : ").strip().lower()
+def descvalidation(projectdescription):
     while True:
         if projectdescription.isalpha():
             break
@@ -27,9 +25,8 @@ def descvalidation():
     return projectdescription
 
 
-def targetvalidation():
+def targetvalidation(target):
     while True:
-        target = int(input("please enter your total target : "))
         if target >= 2000 and target !="" :
             break
         else:
@@ -46,7 +43,7 @@ def datevalidation(input_date):
     except ValueError:
         raise ValueError("Incorrect data format, should be YYYY-MM-DD")
 
-def is_valid (start,end):
+def periodValidation (start,end):
     while True:
         if start < end:
             break
@@ -75,7 +72,7 @@ def fieldvalidation(id, line):
         elif editfield == "e":
             end=input("please enter end date in YYYY-MM-DD: ")
             line[5] = datevalidation(end)
-            end=is_valid(line[4],line[5])
+            end=periodValidation(line[4],line[5])
         editline.append(line)
         print("field has been updated")
         print('-------------------------------------------------')
