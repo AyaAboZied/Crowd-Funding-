@@ -7,18 +7,18 @@ def projects(id):
         try:
             choice == 1 or choice == 2 or choice == 3 or choice == 4 or choice == 5
         except:
-            print("something went wrong")
+            print("something went wrong in choics")
         else:
             if choice == 1:
                 try:
                     createproject(id)
                 except:
-                    print("something went wrong")
+                    print("something went wrong when creating")
             elif choice == 2:
                 try:
                     edit = editproject(id)
                 except:
-                    print("something went wrong")
+                    print("something went wrong when editing")
                 else:
                     with open("projects.txt", 'w') as projectsfile:
                         projectsfile.writelines(edit)
@@ -26,7 +26,7 @@ def projects(id):
                 try:
                     delete = deleteproject(id)
                 except:
-                    print("something went wrong")
+                    print("something went wrong when deleting")
                 else:
                     with open("projects.txt", 'w') as projectsfile:
                         projectsfile.writelines(delete)
@@ -35,7 +35,7 @@ def projects(id):
                 try:
                     viewproject()
                 except:
-                    print("something went wrong")
+                    print("something went wrong when viewing")
             elif choice == 5:
                 print("Thanks,see you soon :D")
                 break
