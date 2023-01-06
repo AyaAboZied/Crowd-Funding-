@@ -57,15 +57,18 @@ def periodValidation (start,end):
 
 def fieldvalidation(id, line):
     editline = []
-    fields = ["n", "d","t", "s", "e"]
+    fields = ["n","d","t", "s", "e"]
     editfield = input("enter the field name to be edited from [ 'n for name', 'd for description',' t for target', 's for startdate', 'e for enddate'] :").strip().lower()
     if editfield in fields:
         if editfield == "n":
-            line[1] =  namevalidation()
+            projectname = input("enter your new project name : ").strip().lower()
+            line[1] =  namevalidation(projectname)
         elif editfield == "d":
-            line[2] = descvalidation()
+            projectdesc = input("enter your new project description : ").strip().lower()
+            line[2] = descvalidation(projectdesc)
         elif editfield == "t":
-            line[3] = str(targetvalidation())
+            target = int(input("please enter your new total target : "))
+            line[3] = str(targetvalidation(target))
         elif editfield == "s":
             start=input("please enter start date in YYYY-MM-DD : ")
             line[4] = datevalidation(start)
