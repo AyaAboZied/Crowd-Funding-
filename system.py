@@ -2,16 +2,16 @@ from UserValidation import *
 from Project import projects
 
 def registration():
-    name = input("enter your full name : ").strip().lower()
+    name = input("Enter your full name : ").strip().lower()
     fullname = namevalidation(name)
 
-    email = input("enter your email : ").strip().lower()
+    email = input("Enter your email : ").strip().lower()
     email = emailvalidation(email)
     
-    password = input("enter your password : ").strip()
+    password = input("Enter your password : ").strip()
     password = passwordvalidation(password)
 
-    phone = input("please enter your number : ").strip().lower()
+    phone = input("Enter your number : ").strip().lower()
     phone = phonevalidation(phone)
 
     
@@ -31,25 +31,25 @@ def registration():
         if choiceforlogin == "y":
             login()
         elif choiceforlogin == "n":
-            print("Thanks,see you soon :D")
+            print("Thanks,see you soon :D\n")
         else:
             print("invalid input")
 
 
 def login():
-    loginemail = input("please enter your email : ").strip().lower()
+    loginemail = input("Enter your email : ").strip().lower()
     try:
         with open("users.txt", 'r') as userfile:
             data = userfile.read()
             data = data.split(":")
     except:
-        print("something went wrong while loging")
+        print("\ninvalid email, try again\n")
     else:
         while True:
             if loginemail in data:
-                passuser = input("please enter your password : ").strip()
+                passuser = input("Enter your password : ").strip()
                 if data[data.index(loginemail)+1] == passuser:
-                    print(f"welcome {data[data.index(loginemail)-1]}")
+                    print(f"\nWelcome {data[data.index(loginemail)-1]}")
                     print('-------------------------------------------------')
                     try:
                         projects(data[data.index(loginemail)-2])
@@ -60,4 +60,4 @@ def login():
                     print("Invalid password , try again")
             else:
                 print("Invalid email , try again")
-                loginemail = input("please enter your email : ").strip().lower()
+                loginemail = input("Enter your email : ").strip().lower()

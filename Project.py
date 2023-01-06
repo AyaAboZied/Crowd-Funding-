@@ -3,22 +3,22 @@ from projectFunctions import *
 
 def projects(id):
     while True:
-        choice = int(input("for create projects enter 1\nfor edit projects enter 2\nfor delete projects enter 3\nfor view projects enter 4\nfor exit 5  : "))
+        choice = int(input("[1] for create project\n[2] for edit project\n[3] for delete project\n[4] for view project\n[5] for exit\n---> "))
         try:
             choice == 1 or choice == 2 or choice == 3 or choice == 4 or choice == 5
         except:
-            print("something went wrong in choics")
+            print("invalid choics\n")
         else:
             if choice == 1:
                 try:
                     createproject(id)
                 except:
-                    print("something went wrong when creating")
+                     print("\nsomething went wrong when creating\n\n")
             elif choice == 2:
                 try:
                     edit = editproject(id)
                 except:
-                    print("something went wrong when editing")
+                    print("\nThere is no projects to edit\n")
                 else:
                     with open("projects.txt", 'w') as projectsfile:
                         projectsfile.writelines(edit)
@@ -26,19 +26,19 @@ def projects(id):
                 try:
                     delete = deleteproject(id)
                 except:
-                    print("something went wrong when deleting")
+                    print("\nThere is no projects to delete\n")
                 else:
                     with open("projects.txt", 'w') as projectsfile:
                         projectsfile.writelines(delete)
             elif choice == 4:
-                print("viewing projects")
+                print("\nViewing Projects:")
                 try:
                     viewproject()
                 except:
-                    print("something went wrong when viewing")
+                    print("\nThere is no projects to view\n")
             elif choice == 5:
-                print("Thanks,see you soon :D")
+                print("Thanks,see you soon :D\n")
                 break
             else:
-                print("invalid choice")
+                print("\ninvalid choice\n")
    
