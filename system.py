@@ -2,21 +2,21 @@ from UserValidation import *
 from Project import projects
 
 def registration():
-    fullname = namevalidation()
-    with open("users.txt", 'a') as userfile:
-        userfile.writelines([f"{id(fullname)}:{fullname}:"])
+    name = input("enter your full name : ").strip().lower()
+    fullname = namevalidation(name)
 
-    email = emailvalidation()
-    with open("users.txt", 'a') as userfile:
-        userfile.write(f"{email}:")
+    email = input("enter your email : ").strip().lower()
+    email = emailvalidation(email)
+    
+    password = input("enter your password : ").strip()
+    password = passwordvalidation(password)
 
-    password = passwordvalidation()
-    with open("users.txt", 'a') as userfile:
-        userfile.write(f"{password}:")
+    phone = input("please enter your number : ").strip().lower()
+    phone = phonevalidation(phone)
 
-    phone = phonevalidation()
+    
     with open("users.txt", 'a') as userfile:
-        userfile.write(f"{phone}\n")
+        userfile.writelines([f"{id(fullname)}:{fullname}:{email}:{password}:{phone}\n"])
 
     print("your registration goes successfully")
     print('-------------------------------------------------')
@@ -26,7 +26,7 @@ def registration():
     try:
         choiceforlogin == "y" or choiceforlogin == "n"
     except:
-        print("something went wrong")
+        print("something went wrong with choices")
     else:
         if choiceforlogin == "y":
             login()
@@ -43,7 +43,7 @@ def login():
             data = userfile.read()
             data = data.split(":")
     except:
-        print("something went wrong")
+        print("something went wrong while loging")
     else:
         while True:
             if loginemail in data:
@@ -54,7 +54,7 @@ def login():
                     try:
                         projects(data[data.index(loginemail)-2])
                     except:
-                        print("something went wrong")
+                        print("something went wrong while creating project")
                     break
                 else:
                     print("Invalid password , try again")

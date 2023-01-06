@@ -1,7 +1,6 @@
 import re
 
-def namevalidation():
-    name = input("enter your full name : ").strip().lower()
+def namevalidation(name):
     while True:
         if name.isalpha() and name !="":
             break
@@ -12,9 +11,8 @@ def namevalidation():
 
 
 
-def emailvalidation():
+def emailvalidation(email):
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.com\b'
-    email = input("enter your email : ").strip().lower()
     while True:
         if(re.fullmatch(regex, email)) and email!='':
             break
@@ -25,9 +23,8 @@ def emailvalidation():
 
 
 
-def passwordvalidation():
+def passwordvalidation(password):
     regex = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,18}$'
-    password = input("enter your password : ").strip()
     while True:
         if re.fullmatch(regex, password) and password!='':
             confirmedpassword = input("confirm your password : ").strip()
@@ -42,8 +39,7 @@ def passwordvalidation():
 
 
 
-def phonevalidation():
-    phone = input("please enter your number : ").strip().lower()
+def phonevalidation(phone):
     while True:
         if len(phone) == 11 and phone.isnumeric() and phone[0]=='0' and phone[1]=='1':
             break
